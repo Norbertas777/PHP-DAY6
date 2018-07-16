@@ -19,18 +19,18 @@
         </p>
         <form action="skaiciuoti.php" method="POST">
             <div class="form-group">
-              <label>Krastine A:</label>
-              <input type="number" name="a" class="form-control" placeholder="krastines ilgis" required>
+              <label>Valandos:</label>
+              <input type="number" name="valandos" class="form-control" placeholder="Valandos" required>
             </div>
             <div class="form-group">
-              <label>Krastine B:</label>
-              <input type="number" name="b" class="form-control" placeholder="krastines ilgis" required>
+              <label>Minutes:</label>
+              <input type="number" name="minutes" class="form-control" placeholder="Minutes" required>
             </div>
             <div class="form-group">
-              <label>Krastine C:</label>
-              <input type="number" name="c" class="form-control" placeholder="krastines ilgis" required>
+              <label>Sekundes:</label>
+              <input type="number" name="sekundes" class="form-control" placeholder="Sekundes" required>
             </div>
-            <button type="submit" class="btn btn-primary">Vykdyti</button>
+            <button type="submit" class="btn btn-primary">Skaiciuoti</button>
         </form>
     </main>      
 
