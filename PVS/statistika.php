@@ -36,6 +36,7 @@ $maksimaliAlga = $rezultatas[0];
 <?php head('Statistika'); ?>
 
 <div class="col-md-12">
+    <br>
     <div class="panel-heading">Įmonės statistika:</div>
     <table class="table">
         <tr>

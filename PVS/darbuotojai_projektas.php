@@ -5,13 +5,13 @@ require "database.php";
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];    
-    $query = "SELECT * FROM pareigos WHERE id = " . $id;
+    $query = "SELECT * FROM projects WHERE id = " . $id;
     $result = mysqli_query($connection, $query);
     $pareigosInfo = mysqli_fetch_assoc($result);
 }
     if (isset($_GET['id'])) {
     $id = $_GET['id'];    
-    $query = "SELECT * FROM darbuotojai WHERE pareigos_id = " . $id;
+    $query = "SELECT * FROM darbuotojai WHERE projects_id = " . $id;
     $result = mysqli_query($connection, $query);
     $darbuotojaiInfo = [];
     if (mysqli_num_rows($result) > 0) {    
@@ -91,10 +91,10 @@ if (mysqli_num_rows($result1) > 0) {
 
 ?>
 
-<?php head('Darbuotojai pagal pareigas'); ?>
+<?php head('Darbuotojai pagal projektus'); ?>
 
 <div class="col-md-12">
-    <h1>Darbuotojai pagal pareigas: <b><?php echo $pareigosInfo['name']; ?></b></h1>
+    <h1>Darbuotojai pagal projekta: <b><?php echo $pareigosInfo['name']; ?></b></h1>
 </div>
 
 <div class="col-md-12">

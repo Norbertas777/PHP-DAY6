@@ -53,12 +53,18 @@ function menu()
                 </a>
                 <a class="nav-item nav-link" href="darbuotojai_statistika.php">
                     Darbuotojų statistika
-                </a>                
+                </a> 
+                <a class="nav-item nav-link" href="projektas_statistika.php">
+                    Projektu statistika
+                </a>
                 <a class="nav-item nav-link" href="darbuotojas_prideti.php">
                     Naujas darbuotojas
                 </a>               
                 <a class="nav-item nav-link" href="pareigos_prideti.php">
                     Naujos pareigos
+                </a>
+                <a class="nav-item nav-link" href="projektas_naujas.php">
+                    Naujas projektas
                 </a>
             </div>
         </div>

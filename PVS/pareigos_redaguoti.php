@@ -1,9 +1,11 @@
 <?php
+
 include "functions.php";
 require "database.php";
 
+
 if (isset($_POST['name']) && isset($_POST['base_salary'])) {
-    $id = $_POST['id'];
+        $id = $_POST['id'];
     $name = $_POST['name'];
     $base_salary = $_POST['base_salary'];
     

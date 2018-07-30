@@ -1,5 +1,45 @@
 <?php
 include "functions.php";
+require "database.php";
+
+$sql = "SELECT COUNT(*) FROM darbuotojai WHERE gender = 'vyras'";
+$result = mysqli_query($connection, $sql);
+$rezultatas = mysqli_fetch_row($result);
+$vyruSkaicius = $rezultatas[0];
+
+$sql = "SELECT COUNT(*) FROM darbuotojai WHERE gender = 'moteris'";
+$result = mysqli_query($connection, $sql);
+$rezultatas = mysqli_fetch_row($result);
+$moteruSkaicius = $rezultatas[0];
+
+$sql = "SELECT COUNT(*) FROM darbuotojai WHERE education = 'aukstasis'";
+$result = mysqli_query($connection, $sql);
+$rezultatas = mysqli_fetch_row($result);
+$aukstasisSkaicius = $rezultatas[0];
+
+$sql = "SELECT COUNT(*) FROM darbuotojai WHERE education = 'vidurinis'";
+$result = mysqli_query($connection, $sql);
+$rezultatas = mysqli_fetch_row($result);
+$vidurinisSkaicius = $rezultatas[0];
+
+$sql = "SELECT COUNT(*) FROM darbuotojai";
+$result = mysqli_query($connection, $sql);
+$rezultatas = mysqli_fetch_row($result);
+$darbuotojuSkaicius = $rezultatas[0];
+
+$sql = "SELECT AVG(salary) FROM darbuotojai WHERE education = 'aukstasis'";
+$result = mysqli_query($connection, $sql);
+$rezultatas = mysqli_fetch_row($result);
+$vidutineAukstasis = $rezultatas[0];
+
+$sql = "SELECT AVG(salary) FROM darbuotojai WHERE education = 'vidurinis'";
+$result = mysqli_query($connection, $sql);
+$rezultatas = mysqli_fetch_row($result);
+$vidutineVidurinis = $rezultatas[0];
+
+
+$vyruProc = ($vyruSkaicius * 100) / $darbuotojuSkaicius;
+$motProc = ($moteruSkaicius * 100) / $darbuotojuSkaicius;
 ?>
 <?php head('Darbuotojai Statistika'); ?>
 
@@ -13,13 +53,13 @@ include "functions.php";
             </tr>
             <tr>
                 <td>Aukštasis</td>
-                <td>3</td>
-                <td>000 EUR</td>
+                <td><?php echo $aukstasisSkaicius; ?></td>
+                <td><?php echo $vidutineAukstasis; ?> EUR</td>
             </tr>
             <tr>
                 <td>Vidurinis</td>
-                <td>7</td>
-                <td>000 EUR</td>
+                <td><?php echo $vidurinisSkaicius; ?></td>
+                <td><?php echo $vidutineVidurinis; ?> EUR</td>
             </tr>
         </table>
     </div>
@@ -34,13 +74,13 @@ include "functions.php";
         </tr>
         <tr>
             <td>Vyras</td>
-            <td>6</td>
-            <td>60 %</td>
+            <td><?php echo $vyruSkaicius; ?></td>
+            <td><?php echo $vyruProc; ?>%</td>
         </tr>
         <tr>
             <td>Moteris</td>
-            <td>4</td>
-            <td>40 %</td>
+            <td><?php echo $moteruSkaicius; ?></td>
+            <td><?php echo $motProc; ?>%</td>
         </tr>
     </table>
 </div>
