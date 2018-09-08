@@ -1,5 +1,4 @@
 <?php
-
 include "functions.php";
 include "auth.php";
 require "database.php";
@@ -12,32 +11,28 @@ if (isset($_POST['name']) && isset($_POST['pages']) && isset($_POST['isbn']) && 
     $isbn = mysqli_real_escape_string($connection, $_POST['isbn']);
     $description = mysqli_real_escape_string($connection, $_POST['short_description']);
     $author = mysqli_real_escape_string($connection, $_POST['author_id']);
-       
-    
-    
-    
+
+
+
+
     $query = "UPDATE books SET title = '$name', pages = '$pages', isbn = '$isbn', short_description = '$description', author_id = '$author' WHERE id = $id";
     $result = mysqli_query($connection, $query);
-    
-    
 }
 
 $query = "SELECT * FROM authors";
 $result = mysqli_query($connection, $query);
 $autoriai = [];
-if (mysqli_num_rows($result) > 0) {    
+if (mysqli_num_rows($result) > 0) {
     while ($autorius = mysqli_fetch_assoc($result)) {
         $autoriai[] = $autorius;
-
     }
 }
 
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];    
+    $id = $_GET['id'];
     $query = "SELECT * FROM books WHERE id = " . $id;
     $result = mysqli_query($connection, $query);
     $booksInfo = mysqli_fetch_assoc($result);
-    
 } else {
     echo 'Klaidos pranesimas';
     exit;
@@ -47,9 +42,9 @@ if (isset($_GET['id'])) {
 
 <div class="col-md-6">
     <br>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
 
     <h2>Knygos redagavimas:</h2>
 
@@ -67,21 +62,21 @@ if (isset($_GET['id'])) {
             <label>ISBN</label>
             <input name="isbn" type="text" class="form-control" value="<?php echo $booksInfo['isbn']; ?>">
         </div>
-       <div class="form-group">
-               <label for="comment">Aprasymas</label>
-               <textarea class="form-control" rows="5" id="comment" name="short_description" value="<?php echo $booksInfo['short_description']; ?>"></textarea>
-                        </div>
-         <div class="form-group">
-                <label for="paskaita">Autorius</label> 
-                <select name="author_id" id="pask" class="form-control" >
-                    <?php foreach ($autoriai as $autorius) { ?>
+        <div class="form-group">
+            <label for="comment">Aprasymas</label>
+            <textarea class="form-control" rows="5" id="comment" name="short_description" value="<?php echo $booksInfo['short_description']; ?>"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="paskaita">Autorius</label> 
+            <select name="author_id" id="pask" class="form-control" >
+<?php foreach ($autoriai as $autorius) { ?>
                     <option value="<?php echo $autorius['id']; ?>"><?php echo $autorius['name'] . ' ' . $autorius['surname'] ?></option> 
-                        
-                        
-                   <?php } ?>
-                </select>
-            </div>
-        
+
+
+                <?php } ?>
+            </select>
+        </div>
+
         <input type="submit" class="btn btn-primary" value="Išsaugoti">
     </form>
 </div>

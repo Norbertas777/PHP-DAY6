@@ -1,25 +1,23 @@
 <?php
-
 include "functions.php";
 include "auth.php";
 require "database.php";
 
 
-if (isset($_POST['name'])  && isset($_POST['surname'])) {
-        $id = $_POST['id'];
+if (isset($_POST['name']) && isset($_POST['surname'])) {
+    $id = $_POST['id'];
     $name = mysqli_real_escape_string($connection, $_POST['name']);
     $surname = mysqli_real_escape_string($connection, $_POST['surname']);
 
-    
+
     $query = "UPDATE authors SET name = '$name', surname = '$surname' WHERE id = $id";
     $result = mysqli_query($connection, $query);
 }
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];    
+    $id = $_GET['id'];
     $query = "SELECT * FROM authors WHERE id = " . $id;
     $result = mysqli_query($connection, $query);
     $authorInfo = mysqli_fetch_assoc($result);
-    
 } else {
     echo 'Klaidos pranesimas';
     exit;
@@ -29,9 +27,9 @@ if (isset($_GET['id'])) {
 
 <div class="col-md-6">
     <br>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
 
     <h2>Autoriaus redagavimas:</h2>
 

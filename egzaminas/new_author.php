@@ -1,7 +1,6 @@
 <?php
-
- include "functions.php";
-  include "auth.php";
+include "functions.php";
+include "auth.php";
 require "database.php";
 
 
@@ -9,23 +8,18 @@ require "database.php";
 if (isset($_POST['name']) && isset($_POST['surname'])) {
     $name = mysqli_real_escape_string($connection, $_POST['name']);
     $surname = mysqli_real_escape_string($connection, $_POST['surname']);
-   
-  
-    
+
+
+
     $query = "INSERT INTO authors (name, surname) VALUES ('$name', '$surname')";
-    
+
     $result = mysqli_query($connection, $query);
-    
+
     if (!$result) {
         echo "Klaida";
         die;
     }
 }
-
-
-
-
-
 ?>
 
 
@@ -37,9 +31,9 @@ if (isset($_POST['name']) && isset($_POST['surname'])) {
 <br>
 
 <div class="col-md-12">
-    
+
     <h2>Naujas autorius:</h2>
-    
+
     <br>
 
     <form action="naujas_autorius.php" method="post">
@@ -52,8 +46,8 @@ if (isset($_POST['name']) && isset($_POST['surname'])) {
                 <label for="pavarde">Pavardė</label> 
                 <input name="surname" type="text" class="form-control" id="pavarde" placeholder="Pavarde" required>
             </div>
-            </div>
-        
+        </div>
+
         <div class="clearfix"></div>
         <div class="col-md-12">
             <br>
