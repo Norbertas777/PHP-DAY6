@@ -1,4 +1,4 @@
-+++<?php
+<?php
 include "auth.php";
 include "functions.php";
 require "database.php";
